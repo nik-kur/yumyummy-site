@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YumYummy — Subscribe</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <!-- Telegram WebApp SDK: exposes window.Telegram.WebApp when this
+       page is opened via a web_app= inline keyboard button. We use it
+       to redirect the user to a real external browser via openLink()
+       so Apple Pay / Google Pay JS APIs work for checkout. -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- ===== Analytics & Tracking Pixels ===== -->
+  <!-- PostHog Analytics + UTM passthrough to Telegram bot -->
+  <script defer src="assets/analytics.js"></script>
+  <!-- TikTok Pixel Code Start -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+    ttq.load('D7VL2IRC77U2TFGF81J0');
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '826914203808503');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=826914203808503&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- ===== End Analytics & Tracking ===== -->
+  <style>
+    /* pay.html-local palette aliases. The legal/landing styles.css uses
+       --brand / --olive-* / --n* names, but earlier revisions of this
+       page referenced --accent / --muted / --border, which would resolve
+       to "unset" → invisible white text on the cream background. */
+    :root {
+      --accent: var(--olive-dark, #5A6A3A);
+      --accent-hover: var(--olive-deeper, #4A5A2A);
+      --muted: var(--n500, #8A7B6B);
+      --border: var(--n300, #D8CCB9);
+    }
+
+    .pay-hero {
+      text-align: center;
+      padding: 60px 24px 24px;
+    }
+    .pay-hero h1 { font-size: 1.75rem; margin-bottom: 8px; }
+    .pay-hero p { color: var(--muted); max-width: 480px; margin: 0 auto 32px; }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .plan-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color .15s, box-shadow .15s;
+      position: relative;
+      background: #fff;
+    }
+    .plan-card:hover { border-color: var(--accent); }
+    .plan-card.popular {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(90, 106, 58, .14);
+    }
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 3px 14px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .plan-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
+    .plan-price { font-size: 1.6rem; font-weight: 800; margin-bottom: 2px; }
+    .plan-period { font-size: .85rem; color: var(--muted); margin-bottom: 20px; }
+    .plan-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .95rem;
+      border: none;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      text-decoration: none;
+    }
+    .plan-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      text-decoration: none;
+      color: #fff;
+    }
+    .plan-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .pay-note {
+      text-align: center;
+      font-size: .82rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+
+    .pay-error {
+      text-align: center;
+      color: #dc2626;
+      font-size: .9rem;
+      margin: 16px auto;
+      max-width: 480px;
+      display: none;
+      padding: 0 24px;
+    }
+
+    .pay-success {
+      text-align: center;
+      padding: 60px 24px;
+      display: none;
+    }
+    .pay-success h2 { color: #16a34a; margin-bottom: 12px; }
+    .pay-success p { color: var(--muted); max-width: 400px; margin: 0 auto; }
+
+    .pay-loading {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .pay-loading .spinner {
+      display: inline-block;
+      width: 32px; height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      margin-bottom: 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">YumYummy</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</header>
+
+<!-- Loading state while checkout opens automatically -->
+<div id="loading-view" class="pay-loading" style="display:none;">
+  <div class="spinner"></div>
+  <div>Opening secure checkout...</div>
+</div>
+
+<!-- Plan selection (shown only if no plan pre-selected) -->
+<div id="checkout-view" style="display:none;">
+  <div class="pay-hero">
+    <h1>Choose your plan</h1>
+    <p>Full access to YumYummy AI nutrition tracking. Cancel anytime.</p>
+  </div>
+
+  <div id="error-msg" class="pay-error"></div>
+
+  <div class="plans-grid">
+    <div class="plan-card popular">
+      <div class="plan-badge">Most popular</div>
+      <div class="plan-name">Monthly</div>
+      <div class="plan-price">$9.99</div>
+      <div class="plan-period">per month</div>
+      <button class="plan-btn" id="btn-monthly" onclick="openCheckout('monthly')">Subscribe</button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">Yearly</div>
+      <div class="plan-price">$89.99</div>
+      <div class="plan-period">per year <span style="color:var(--accent);font-weight:600;">— save 25%</span></div>
+      <button class="plan-btn" id="btn-yearly" onclick="openCheckout('yearly')">Subscribe</button>
+    </div>
+  </div>
+
+  <div class="pay-note">
+    Secure payment via Paddle. You can also pay with Telegram Stars directly inside the bot.
+  </div>
+</div>
+
+<!-- Interstitial for Telegram WebView: redirect user to external browser -->
+<div id="open-in-browser-view" style="display:none;">
+  <div class="pay-hero">
+    <h1>Open this page in your browser</h1>
+    <p>For Apple&nbsp;Pay and card payments to work correctly, this page needs to be opened in Safari or Chrome. It takes one tap.</p>
+  </div>
+  <div style="text-align:center;padding:0 24px 48px;">
+    <a id="open-external-btn" class="plan-btn" style="padding:16px 40px;font-size:1rem;">
+      Open in browser
+    </a>
+    <div id="ios-hint" style="display:none;margin-top:24px;font-size:.88rem;color:var(--muted);max-width:420px;margin-left:auto;margin-right:auto;">
+      If nothing happens: tap <b>&middot;&middot;&middot;</b> at the top right of
+      this window, then choose <b>Open in Safari</b> or <b>Open in Browser</b>.
+    </div>
+  </div>
+</div>
+
+<div id="success-view" class="pay-success">
+  <h2>Payment confirmed!</h2>
+  <p>Your subscription is now active. Go back to the Telegram bot and start tracking!</p>
+  <br/>
+  <a href="/open?ref=pay_success" class="plan-btn" style="display:inline-block;margin-top:12px;"
+     data-cta-id="open_bot" data-cta-location="pay_success">Open YumYummy Bot</a>
+</div>
+
+<footer>
+  <a href="terms.html">Terms</a> &middot;
+  <a href="privacy.html">Privacy</a> &middot;
+  <a href="refunds.html">Refunds</a>
+  <br/>&copy; 2026 YumYummy
+</footer>
+
+<script>
+(function () {
+  /* ---- Parse query params ---- */
+  var params = new URLSearchParams(window.location.search);
+  var telegramId = params.get("tid");
+  var plan = params.get("plan");
+  var token = params.get("token");
+  // Explicit signal from the bot that this URL was generated for a
+  // Telegram user. Source of truth for "should we show the
+  // open-in-external-browser interstitial?".
+  var src = params.get("src");
+  // Set by the interstitial when the user re-opens the URL in a real
+  // browser. Skips the interstitial on the second visit so we don't
+  // loop the user.
+  var alreadyExternal = params.get("external") === "1";
+
+  /* ---- Telegram WebView detection (UA fallback) ----
+     This is intentionally loose because Telegram opens URL buttons in
+     SFSafariViewController on iOS, whose UA does contain "Safari" and
+     does NOT contain "Telegram". We rely primarily on src=tg from the
+     bot; this UA heuristic only catches edge cases (e.g. shared links). */
+  function isTelegramWebView() {
+    var ua = navigator.userAgent || "";
+    var hasTgObj = !!(window.Telegram && (window.Telegram.WebView || window.Telegram.WebApp));
+    var uaLooksTg = /Telegram/i.test(ua);
+    var isAndroidWV = /Android/i.test(ua) && /\bwv\b/i.test(ua);
+    var isIOSInApp = /iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua);
+    return hasTgObj || uaLooksTg || isAndroidWV || isIOSInApp;
+  }
+
+  function isAndroidUA() {
+    return /Android/i.test(navigator.userAgent || "");
+  }
+
+  function isIOSUA() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+  }
+
+  function buildExternalUrl() {
+    var u = new URL(window.location.href);
+    u.searchParams.set("external", "1");
+    return u.toString();
+  }
+
+  function buildChromeIntentUrl(httpsUrl) {
+    var u = new URL(httpsUrl);
+    return "intent://" + u.host + u.pathname + u.search +
+           "#Intent;scheme=https;package=com.android.chrome" +
+           ";S.browser_fallback_url=" + encodeURIComponent(httpsUrl) + ";end";
+  }
+
+  function renderOpenInBrowserView() {
+    document.getElementById("loading-view").style.display = "none";
+    document.getElementById("checkout-view").style.display = "none";
+    document.getElementById("open-in-browser-view").style.display = "block";
+
+    var externalUrl = buildExternalUrl();
+    var btn = document.getElementById("open-external-btn");
+
+    if (isAndroidUA()) {
+      var intentUrl = buildChromeIntentUrl(externalUrl);
+      btn.href = intentUrl;
+      setTimeout(function () { window.location.href = intentUrl; }, 100);
+    } else {
+      // iOS / other: a plain https link with target=_blank. Telegram's
+      // in-app browser usually keeps it in-app, so we also surface the
+      // "tap ⋯ → Open in Safari" hint as the primary instruction.
+      btn.href = externalUrl;
+      btn.target = "_blank";
+      btn.rel = "noopener";
+      if (isIOSUA()) {
+        document.getElementById("ios-hint").style.display = "block";
+      }
+    }
+  }
+
+  /* ---- Telegram Mini App auto-redirect to external browser ----
+     When this page is opened via a `web_app=` button in an inline
+     keyboard, Telegram exposes its WebApp API. We use openLink() to
+     hand the checkout URL off to the user's real browser (Safari /
+     Chrome / default), where Apple Pay / Google Pay JS APIs actually
+     work. This replaces the old "Open in browser" interstitial as the
+     primary flow — the interstitial below stays only as a fallback
+     for shared links opened directly in Telegram's plain in-app
+     webview (no WebApp API available). */
+  var tgWebApp = window.Telegram && window.Telegram.WebApp;
+  // initData is empty when the page is loaded outside a Mini App
+  // context (e.g. shared link, external Safari), so it's a reliable
+  // signal that we were launched via a web_app= button.
+  var inMiniApp = !!(tgWebApp && tgWebApp.initData);
+
+  if (src === "tg" && inMiniApp) {
+    // iOS / Telegram restricts Telegram.WebApp.openLink() to user-
+    // initiated calls only; a silent auto-redirect on page load is
+    // blocked. So we render a single-tap launcher inside the Mini App
+    // and only fire openLink() from the resulting click handler. We
+    // also bind Telegram's native MainButton to the same handler so
+    // users who reach for it (sticky bottom button, styled by
+    // Telegram) get the same result.
+
+    var extParams = new URLSearchParams(window.location.search);
+    extParams.set("src", "ext");
+    var externalUrl = window.location.origin + window.location.pathname +
+                      "?" + extParams.toString();
+
+    try { tgWebApp.ready(); } catch (e) { /* old client */ }
+    try { tgWebApp.expand(); } catch (e) { /* old client */ }
+
+    var redirectFired = false;
+    function fireRedirect() {
+      if (redirectFired) return;
+      redirectFired = true;
+      try { tgWebApp.openLink(externalUrl); } catch (e) { /* old client */ }
+      // Hold the Mini App open briefly so the OS has time to pick up
+      // the external-open request before we tear ourselves down.
+      // Closing too eagerly cancels the pending open on some clients.
+      setTimeout(function () {
+        try { tgWebApp.close(); } catch (e) { /* old client */ }
+      }, 1500);
+    }
+
+    document.body.innerHTML =
+      "<div style=\"font-family:var(--sans,system-ui);padding:60px 24px 32px;" +
+      "text-align:center;background:var(--cream,#F7F1E6);" +
+      "min-height:100vh;color:var(--ink,#2A2A2A);box-sizing:border-box;\">" +
+      "<h1 style=\"font-family:var(--serif,Georgia);font-size:1.6rem;" +
+      "margin:0 0 12px;\">Open secure checkout</h1>" +
+      "<p style=\"color:var(--muted,#8A7B6B);max-width:420px;" +
+      "margin:0 auto 32px;line-height:1.5;\">" +
+      "Tap the button below to complete payment in your browser, " +
+      "where Apple Pay and cards work properly." +
+      "</p>" +
+      "<button id=\"cont-btn\" style=\"background:var(--accent,#5A6A3A);" +
+      "color:#fff;padding:16px 36px;border-radius:10px;border:none;" +
+      "font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer;\">" +
+      "Continue to checkout \u2192" +
+      "</button>" +
+      "</div>";
+
+    document.getElementById("cont-btn").addEventListener("click", fireRedirect);
+
+    // Telegram's native MainButton is intentionally NOT bound here:
+    // showing it on top of the in-page CTA produced two visually
+    // competing buttons (one centred in the viewport, one stuck to
+    // the bottom edge). The single in-page button is enough.
+    if (tgWebApp.MainButton) {
+      try { tgWebApp.MainButton.hide(); } catch (e) { /* old client */ }
+    }
+
+    return;
+  }
+
+  /* ---- Decide whether to show the interstitial (legacy fallback) ----
+     1. If user already came back via the interstitial (external=1),
+        or is here via the Mini App redirect (src=ext), go straight to
+        Paddle.
+     2. Else, if the bot tagged the URL with src=tg AND we're not in a
+        Mini App (= shared link in Telegram's plain in-app webview),
+        show the manual interstitial.
+     3. Else, fall back to UA-based detection for shared / legacy links. */
+  if (src === "ext") {
+    // Coming back from the Mini App redirect — render checkout.
+  } else if (!alreadyExternal && (src === "tg" || isTelegramWebView())) {
+    renderOpenInBrowserView();
+    return;
+  }
+
+  /* ---- Normal flow: initialise Paddle checkout ---- */
+  var PRICE_IDS = {
+    monthly: "pri_01kmq60c1atp7edrsn5255kppm",
+    yearly:  "pri_01kmq6279x4zmkr5mj0vqaphyh"
+  };
+
+  var CLIENT_TOKEN = params.get("cst") || "";
+  var ENV = params.get("env") || "sandbox";
+  var initialized = false;
+
+  function showError(msg) {
+    var el = document.getElementById("error-msg");
+    el.textContent = msg;
+    el.style.display = "block";
+    document.getElementById("loading-view").style.display = "none";
+    document.getElementById("checkout-view").style.display = "block";
+  }
+
+  if (!CLIENT_TOKEN) {
+    showError("Payment is not configured. Please open this page from the bot.");
+  } else {
+    try {
+      Paddle.Environment.set(ENV);
+      Paddle.Initialize({
+        token: CLIENT_TOKEN,
+        eventCallback: function (ev) {
+          if (ev.name === "checkout.completed") {
+            document.getElementById("checkout-view").style.display = "none";
+            document.getElementById("loading-view").style.display = "none";
+            document.getElementById("success-view").style.display = "block";
+          }
+          if (ev.name === "checkout.closed") {
+            document.getElementById("loading-view").style.display = "none";
+            document.getElementById("checkout-view").style.display = "block";
+            document.getElementById("btn-monthly").disabled = false;
+            document.getElementById("btn-yearly").disabled = false;
+          }
+        }
+      });
+      initialized = true;
+    } catch (e) {
+      showError("Failed to initialize payment system: " + e.message);
+    }
+  }
+
+  window.openCheckout = function (selectedPlan) {
+    if (!telegramId) {
+      showError("Missing Telegram user ID. Please open this page from the bot.");
+      return;
+    }
+    if (!initialized) {
+      showError("Payment system not ready. Please try again.");
+      return;
+    }
+
+    var priceId = PRICE_IDS[selectedPlan];
+    if (!priceId) {
+      showError("Unknown plan.");
+      return;
+    }
+
+    document.getElementById("btn-monthly").disabled = true;
+    document.getElementById("btn-yearly").disabled = true;
+
+    Paddle.Checkout.open({
+      settings: {
+        displayMode: "overlay",
+        theme: "light",
+        locale: "en"
+      },
+      items: [{ priceId: priceId, quantity: 1 }],
+      customData: {
+        telegram_id: telegramId,
+        plan_id: selectedPlan,
+        claim_token: token || ""
+      }
+    });
+  };
+
+  if (plan && PRICE_IDS[plan] && telegramId && initialized) {
+    document.getElementById("loading-view").style.display = "block";
+    setTimeout(function () {
+      openCheckout(plan);
+    }, 500);
+  } else if (initialized) {
+    document.getElementById("checkout-view").style.display = "block";
+  }
+})();
+</script>
+
+</body>
+</html>
