@@ -1,6 +1,5 @@
 /* YumYummy landing: small progressive enhancements.
    - Sticky nav gets a hairline once the page scrolls.
-   - Sections fade in as they enter the viewport.
    - App Store buttons: inside in-app browsers on iPhone (Instagram,
      Facebook, TikTok...) a plain apps.apple.com link often opens the
      web listing instead of the App Store app. There we try the
@@ -16,18 +15,6 @@
     var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-  }
-
-  var items = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach(function (el) { io.observe(el); });
-  } else {
-    items.forEach(function (el) { el.classList.add('in'); });
   }
 
   var ua = navigator.userAgent || '';
