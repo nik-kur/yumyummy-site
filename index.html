@@ -2,26 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>YumYummy — AI Calorie Tracker. Precision you can trust.</title>
-<meta name="description" content="The AI calorie & macro tracker for iPhone. Log any meal by text, voice, or photo in seconds — with real nutrition data from official sources: USDA, EU labels, manufacturers.">
-<link rel="canonical" href="https://yumyummy.ai/" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>YumYummy: AI Calorie Tracker for iPhone with real sources</title>
+<meta name="description" content="Log any meal by text, voice or photo in seconds. YumYummy finds real nutrition data from USDA, official labels, brands and restaurant menus, and shows the source of every number. Free trial on the App Store.">
+<link rel="canonical" href="https://yumyummy.ai/">
+<meta name="apple-itunes-app" content="app-id=6785363037">
+<meta name="theme-color" content="#FAF6EF">
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://yumyummy.ai/" />
-<meta property="og:title" content="YumYummy — AI Calorie Tracker for iPhone" />
-<meta property="og:description" content="Log any meal by text, voice, or photo in seconds — with real nutrition data from official sources: USDA, EU labels, manufacturers. Free 3-day trial." />
-<meta property="og:image" content="https://yumyummy.ai/assets/logo.png" />
-<meta property="og:image:alt" content="YumYummy — AI calorie tracker with source-verified nutrition data" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="YumYummy — AI Calorie Tracker for iPhone" />
-<meta name="twitter:description" content="Log any meal by text, voice, or photo in seconds — with source-verified nutrition data. Free 3-day trial." />
-<meta name="twitter:image" content="https://yumyummy.ai/assets/logo.png" />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YumYummy">
+<meta property="og:url" content="https://yumyummy.ai/">
+<meta property="og:title" content="YumYummy: calorie tracking you can trust">
+<meta property="og:description" content="The AI calorie tracker for iPhone that shows where every number comes from. Log by text, voice or photo in seconds.">
+<meta property="og:image" content="https://yumyummy.ai/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YumYummy app screens: calories left, real sources, meal breakdown">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YumYummy: calorie tracking you can trust">
+<meta name="twitter:description" content="The AI calorie tracker for iPhone that shows where every number comes from.">
+<meta name="twitter:image" content="https://yumyummy.ai/assets/og.png">
 
-<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"YumYummy: AI Calorie Tracker","operatingSystem":"iOS","applicationCategory":"HealthApplication","url":"https://yumyummy.ai/","installUrl":"https://apps.apple.com/app/id6785363037","description":"AI calorie and macro tracker for iPhone with source-verified nutrition data. Log meals by text, voice or photo."}
+</script>
 
 <!-- ===== Analytics & Tracking Pixels ===== -->
-<!-- PostHog Analytics + UTM passthrough to Telegram bot -->
+<!-- PostHog analytics (UTM capture, cta_clicked events) -->
 <script defer src="assets/analytics.js"></script>
 <!-- TikTok Pixel Code Start -->
 <script>
@@ -57,589 +67,459 @@ src="https://www.facebook.com/tr?id=826914203808503&ev=PageView&noscript=1"
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --brand:#B85A3A; --brand-dark:#9A4628; --brand-subtle:#EFDFD1;
-    --ink:#2A2A2A; --cream:#F7F1E6;
-    --ochre:#E8B870; --olive:#8B9A57; --olive-dark:#5A6A3A; --olive-deeper:#4A5A2A;
-    --n50:#FAF8F5; --n100:#F7F1E6; --n200:#EDE4D4; --n300:#D8CCB9; --n400:#B8A898;
-    --n500:#8A7B6B; --n600:#5E5145; --n700:#3D3228; --n800:#2A2A2A;
-    --info-bg:#E8F0FA; --info-text:#1F4E8C;
-    --success-bg:#EAF5EE; --success-text:#2D6A4F;
-    --serif:'Fraunces',Georgia,serif;
-    --sans:'Inter',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
-    --shadow-sm:0 1px 2px rgba(42,28,14,.06);
-    --shadow-md:0 4px 8px rgba(42,28,14,.08),0 1px 3px rgba(42,28,14,.04);
-    --shadow-lg:0 8px 20px rgba(42,28,14,.10),0 2px 6px rgba(42,28,14,.06);
-    --shadow-xl:0 18px 50px rgba(42,28,14,.14),0 4px 12px rgba(42,28,14,.08);
+    --bg:#FAF6EF; --panel:#F3EBDD; --surface:#FFFFFF;
+    --ink:#1F1B16; --ink-2:#4A423A; --muted:#7A6F63; --line:#E7DDCD;
+    --accent:#B85A3A; --accent-ink:#9A4628; --accent-soft:#F4E3D8;
+    --ok:#4F6B3A;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    --radius:24px;
+    --wrap:1120px;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  a{color:var(--brand-dark);text-decoration:none}
-  a:hover{text-decoration:underline}
-  img,video{max-width:100%;display:block}
-  button{font:inherit}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{max-width:100%;height:auto;display:block}
+  a{color:var(--accent-ink)}
+  h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance}
+  h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em}
+  h1{font-size:clamp(40px,6.6vw,76px);line-height:1.02}
+  h2{font-size:clamp(30px,4.2vw,48px);line-height:1.08}
+  h3{font-size:19px;line-height:1.35;font-weight:600;letter-spacing:-.005em}
+  p{margin:0}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .kicker{font-size:15px;font-weight:600;color:var(--accent-ink);margin-bottom:14px}
+  .lead{font-size:19px;line-height:1.55;color:var(--ink-2)}
+  .muted{color:var(--muted)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-  /* TYPE */
-  h1,h2,h3{font-family:var(--serif);letter-spacing:-.02em;color:var(--ink)}
-  h1{font-weight:700;font-size:clamp(36px,6.4vw,72px);line-height:1.04}
-  h2{font-weight:600;font-size:clamp(28px,3.6vw,46px);line-height:1.12;letter-spacing:-.015em}
-  h3{font-weight:600;font-size:22px;line-height:1.3}
-  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--brand);text-transform:uppercase;font-weight:600}
-  .eyebrow.dim{color:var(--n500)}
-
-  /* LAYOUT */
-  .container{max-width:1180px;margin:0 auto;padding:0 28px}
-  section{padding:96px 0}
-  section.tight{padding:72px 0}
-  hr.rule{border:none;border-top:1px solid var(--n200);max-width:1180px;margin:0 auto}
-
-  /* UTILITY BAR (legal links above main nav) */
-  .utility-bar{background:var(--n100);border-bottom:1px solid var(--n200);font-family:var(--sans);font-size:12px}
-  .utility-inner{max-width:1180px;margin:0 auto;padding:7px 28px;display:flex;justify-content:flex-end;gap:22px;flex-wrap:wrap}
-  .utility-inner a{color:var(--n600);font-weight:500;letter-spacing:.01em}
-  .utility-inner a:hover{color:var(--brand-dark);text-decoration:none}
+  /* App Store button (Apple-style badge, black) */
+  .store{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 16px;border-radius:13px;background:#000;color:#fff;text-decoration:none;border:1px solid #A6A6A6;transition:transform .15s ease,box-shadow .15s ease;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif}
+  .store:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+  .store svg{width:26px;height:32px;flex:none;fill:#fff}
+  .store span{display:flex;flex-direction:column;line-height:1}
+  .store small{font-size:11.5px;letter-spacing:.01em;margin-bottom:3px}
+  .store b{font-size:23px;font-weight:600;letter-spacing:-.02em}
+  .store.sm{height:40px;padding:0 13px 0 11px;border-radius:9px;gap:7px}
+  .store.sm svg{width:17px;height:21px}
+  .store.sm small{font-size:8.5px;margin-bottom:2px}
+  .store.sm b{font-size:16px}
 
   /* NAV */
-  .nav{position:sticky;top:0;z-index:100;background:rgba(247,241,230,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:.5px solid var(--n200)}
-  .nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;height:68px;padding:0 28px;gap:32px}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .brand img{width:36px;height:auto}
-  .brand-name{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);letter-spacing:-.02em}
-  .nav-links{display:flex;align-items:center;gap:28px;margin-left:auto}
-  .nav-links a:not(.btn-primary){font-size:14px;color:var(--ink);font-weight:500}
-  .nav-links a:not(.btn-primary):hover{color:var(--brand-dark);text-decoration:none}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:10px;font-weight:600;font-size:15px;line-height:1;cursor:pointer;border:none;text-decoration:none;transition:all .18s ease;font-family:var(--sans)}
-  .btn-primary{background:var(--olive-dark);color:#FFFFFF;box-shadow:var(--shadow-sm)}
-  .btn-primary:hover{background:var(--olive-deeper);text-decoration:none;color:#FFFFFF;box-shadow:var(--shadow-md);transform:translateY(-1px)}
-  .btn-primary:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
-  .btn-primary.lg{padding:16px 26px;font-size:16px;border-radius:12px}
-  .btn-ghost{background:transparent;color:var(--ink);padding:10px 16px;border:1px solid var(--n300)}
-  .btn-ghost:hover{background:#fff;text-decoration:none;color:var(--ink)}
-  .nav-cta{padding:9px 16px;font-size:13.5px;border-radius:9px}
-  .tg-icon{width:18px;height:18px;flex-shrink:0}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.88);-webkit-backdrop-filter:saturate(150%) blur(10px);backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  .nav.scrolled{border-bottom-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand img{width:32px;height:32px;border-radius:8px}
+  .brand span{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.02em}
+  .nav-links{display:flex;gap:26px;margin-left:auto}
+  .nav-links a{color:var(--ink-2);text-decoration:none;font-size:15px;font-weight:500}
+  .nav-links a:hover{color:var(--ink)}
+  @media (max-width:760px){.nav-links{display:none}.nav .store{margin-left:auto}}
 
   /* HERO */
-  .hero{padding:80px 0 64px;background:linear-gradient(180deg,var(--cream) 0%, var(--n50) 100%)}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
-  .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;background:#fff;border:1px solid var(--n200);border-radius:999px;font-size:13px;color:var(--n700);box-shadow:var(--shadow-sm);margin-bottom:24px;font-weight:500}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(184,90,58,.18)}
-  .hero-h1{margin-bottom:20px}
-  .hero-h1 em{font-style:italic;color:var(--brand-dark)}
-  .hero-sub{font-size:19px;color:var(--n700);max-width:560px;line-height:1.55;margin-bottom:28px}
-  .hero-proof{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
-  .hero-proof span{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--n700)}
-  .hero-proof .pi{width:24px;height:24px;border-radius:50%;background:var(--brand-subtle);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-  .hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .hero-foot{margin-top:18px;font-size:13px;color:var(--n500);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .hero-foot .fdot{width:4px;height:4px;border-radius:50%;background:var(--n400)}
+  .hero{padding:56px 0 88px}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{margin-bottom:22px}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero .lead{max-width:520px;margin-bottom:32px}
+  .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .cta-note{font-size:14.5px;color:var(--muted);line-height:1.45}
+  .ways{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+  .ways span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:14.5px;font-weight:500;color:var(--ink-2)}
+  .ways svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .hero-visual{position:relative;background:var(--panel);border-radius:32px;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:flex-end;justify-content:center}
+  .hero-visual picture{width:88%}
+  .hero-visual img{width:100%}
+  @media (max-width:900px){
+    .hero{padding:28px 0 64px}
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hero-visual{aspect-ratio:auto;padding-top:40px;max-width:520px;width:100%;margin:0 auto}
+  }
 
-  /* PHONE MOCKUP */
-  .phone-wrap{display:flex;justify-content:center;align-items:center;position:relative}
-  .phone-wrap::before{content:'';position:absolute;width:480px;height:480px;background:radial-gradient(closest-side,rgba(184,90,58,.18),transparent 70%);z-index:0}
-  .phone-frame{position:relative;z-index:1;width:300px;height:608px;background:#1a1714;border-radius:48px;padding:10px;box-shadow:var(--shadow-xl), inset 0 0 0 2px rgba(255,255,255,.04)}
-  .phone-screen{position:relative;width:100%;height:100%;background:#000;border-radius:38px;overflow:hidden}
-  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:110px;height:32px;background:#000;border-radius:18px;z-index:2}
-  .phone-video{width:100%;height:100%;object-fit:cover}
+  /* SOURCES BAND */
+  .band{background:var(--ink);color:#F4EDE2;padding:72px 0}
+  .band .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center}
+  .band h2{color:#FBF6EE}
+  .band p{color:#D9CFC1;font-size:18px}
+  .src-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .src{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 18px}
+  .src b{display:block;color:#FBF6EE;font-weight:600;font-size:16px;margin-bottom:2px}
+  .src span{font-size:14px;color:#BDB1A2;line-height:1.45;display:block}
+  @media (max-width:860px){.band .wrap{grid-template-columns:1fr;gap:32px}}
+  @media (max-width:460px){.src-list{grid-template-columns:1fr}}
 
-  /* HERO SHOWCASE */
-  .showcase{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .show-card{background:#fff;border:1px solid var(--n200);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:all .2s ease;position:relative;overflow:hidden}
-  .show-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--brand);opacity:.0;transition:opacity .25s}
-  .show-card:hover{border-color:var(--n300);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-  .show-card:hover::before{opacity:1}
-  .show-num{font-family:var(--mono);font-size:11px;color:var(--n500);letter-spacing:.14em}
-  .show-label{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:-.01em}
-  .show-desc{font-size:14.5px;color:var(--n600);line-height:1.55}
-  .show-input{font-family:var(--mono);font-size:13px;background:var(--n50);padding:10px 12px;border-radius:8px;border:1px solid var(--n200);color:var(--n700);margin-top:auto;word-break:break-word}
+  /* FEATURE ROWS */
+  .features{padding:112px 0 40px}
+  .section-head{max-width:680px;margin-bottom:64px}
+  .section-head .lead{margin-top:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:104px}
+  .row:last-child{margin-bottom:0}
+  .row.flip .row-media{order:2}
+  .row-media{background:var(--panel);border-radius:var(--radius);overflow:hidden;display:flex;justify-content:center;align-items:flex-end;padding-top:44px;aspect-ratio:1/1}
+  .row-media picture{width:76%}
+  .row-media img{width:100%}
+  .row-text h3{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,36px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px}
+  .row-text .lead{margin-bottom:22px}
+  .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .ticks li{position:relative;padding-left:30px;color:var(--ink-2);font-size:16.5px}
+  .ticks li::before{content:"";position:absolute;left:0;top:5px;width:18px;height:18px;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239A4628' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+  @media (max-width:860px){
+    .features{padding:80px 0 24px}
+    .section-head{margin-bottom:44px}
+    .row{grid-template-columns:1fr;gap:28px;margin-bottom:72px}
+    .row.flip .row-media{order:0}
+    .row-media{aspect-ratio:auto;padding-top:32px;max-height:520px}
+    .row-media picture{width:70%;max-width:340px}
+  }
 
-  /* SECTION HEADER */
-  .sec-header{max-width:680px;margin:0 auto 56px;text-align:center}
-  .sec-header.left{margin:0 0 48px;text-align:left}
-  .sec-header h2{margin:14px 0 14px}
-  .sec-sub{font-size:18px;color:var(--n700);line-height:1.55}
+  /* SMALL GRID */
+  .more{padding:88px 0 112px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px}
+  .tile svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px}
+  .tile h3{margin-bottom:8px}
+  .tile p{color:var(--ink-2);font-size:15.5px;line-height:1.55}
+  .tile.wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:center;padding:26px 26px 26px 26px}
+  .tile.wide img{border-radius:14px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}.tile.wide{grid-column:span 2}}
+  @media (max-width:600px){.grid{grid-template-columns:1fr}.tile.wide{grid-column:auto;grid-template-columns:1fr}}
 
-  /* ACCURACY */
-  .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-  .acc-steps{display:flex;flex-direction:column;gap:24px;margin-top:32px}
-  .acc-step{display:flex;gap:18px;align-items:flex-start}
-  .acc-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--brand);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:18px}
-  .acc-step strong{display:block;font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:4px;color:var(--ink)}
-  .acc-step p{font-size:15px;color:var(--n600);line-height:1.55}
-  .acc-examples{display:flex;flex-direction:column;gap:18px}
-  .acc-card{background:#fff;border:1px solid var(--n200);border-radius:18px;padding:22px 24px;box-shadow:var(--shadow-sm)}
-  .acc-card-head{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin-bottom:14px}
-  .acc-card-emoji{font-size:24px;line-height:1}
-  .acc-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);background:var(--brand-subtle);padding:4px 10px;border-radius:999px;font-weight:600}
-  .acc-query{font-style:italic;color:var(--n700);font-size:15px;margin-bottom:16px;padding-left:14px;border-left:3px solid var(--brand-subtle)}
-  .acc-rows{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
-  .acc-row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px solid var(--n100)}
-  .acc-row span{color:var(--n600)}
-  .acc-row strong{font-family:var(--mono);font-weight:600;color:var(--ink);white-space:nowrap}
-  .acc-source{margin-top:14px;font-size:12.5px;color:var(--n500);display:flex;align-items:center;gap:6px}
-  .acc-source::before{content:'↗';color:var(--brand)}
+  /* GALLERY */
+  .gallery{padding:0 0 112px}
+  .gallery .section-head{margin-bottom:36px}
+  .shots{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 16px;scrollbar-width:thin;max-width:calc(var(--wrap) + 48px);margin:0 auto}
+  .shots picture{flex:0 0 auto;width:min(240px,62vw);scroll-snap-align:start}
+  .shots img{border-radius:20px;border:1px solid var(--line);width:100%}
 
   /* STORY */
-  .story{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
-  .story::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(closest-side,rgba(184,90,58,.18),transparent 70%);pointer-events:none}
-  .story h2{color:var(--cream);font-size:clamp(24px,3vw,38px);line-height:1.16}
-  .story .eyebrow{color:var(--ochre)}
-  .story-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start;position:relative;z-index:1}
-  .story-aside{position:sticky;top:96px}
-  .story-aside h2{word-spacing:0.05em}
-  .pull-quote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;color:var(--cream);margin-top:32px;padding-left:24px;border-left:3px solid var(--brand)}
-  .story-text p{font-size:17px;line-height:1.7;color:#d6c8b8;margin-bottom:18px}
-  .story-text p:first-of-type::first-letter{font-family:var(--serif);font-weight:700;font-size:62px;float:left;line-height:.9;padding:6px 12px 0 0;color:var(--brand)}
-  .story-text strong{color:var(--cream);font-weight:500}
-  .story-cta{margin-top:32px}
-
-  /* FEATURES */
-  .features{background:var(--n50)}
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--n200);border-radius:24px;overflow:hidden;background:#fff}
-  .feat{padding:36px 32px;border-right:1px solid var(--n200);border-bottom:1px solid var(--n200);display:flex;flex-direction:column;gap:14px;transition:background .25s}
-  .feat:hover{background:var(--n50)}
-  .feat:nth-child(3n){border-right:none}
-  .feat:nth-last-child(-n+3){border-bottom:none}
-  .feat-num{font-family:var(--mono);font-size:11px;color:var(--n500);letter-spacing:.14em}
-  .feat h3{font-size:21px;letter-spacing:-.01em}
-  .feat p{font-size:15px;color:var(--n600);line-height:1.55}
-  .feat-icon{width:44px;height:44px;border-radius:12px;background:var(--brand-subtle);color:var(--brand-dark);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:4px}
-
-  /* CTA */
-  .cta{background:var(--ink);color:var(--cream);text-align:center;padding:120px 28px}
-  .cta-inner{max-width:760px;margin:0 auto}
-  .cta h2{color:var(--cream);font-size:clamp(34px,4.6vw,60px);margin-bottom:20px;line-height:1.08}
-  .cta p{font-size:19px;color:rgba(247,241,230,.78);max-width:560px;margin:0 auto 36px;line-height:1.55}
-  .cta .btn-primary{background:var(--olive-dark);color:#FFFFFF}
-  .cta .btn-primary:hover{background:var(--olive-deeper);color:#FFFFFF}
-  .price-banner{margin-top:36px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 28px;max-width:640px;margin-left:auto;margin-right:auto}
-  .price-banner p{font-size:15px;color:rgba(247,241,230,.78);margin:0;line-height:1.6}
-  .price-banner strong{color:var(--cream);font-weight:600}
-  .save-pill{display:inline-block;background:var(--brand);color:#FFFFFF;font-family:var(--sans);font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;margin:0 2px;letter-spacing:.02em}
+  .story{background:var(--panel);padding:104px 0}
+  .story .wrap{max-width:760px}
+  .story h2{margin-bottom:28px}
+  .story p{font-size:18.5px;color:var(--ink-2);margin-bottom:18px;line-height:1.65}
+  .story blockquote{margin:0 0 28px;font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.6vw,28px);line-height:1.3;color:var(--ink);letter-spacing:-.01em}
+  .story .sig{font-size:15px;color:var(--muted);margin-top:8px}
 
   /* FAQ */
-  .faq-list{max-width:780px;margin:48px auto 0;display:flex;flex-direction:column;gap:14px}
-  .faq{background:#fff;border:1px solid var(--n200);border-radius:14px;overflow:hidden;transition:border-color .2s}
-  .faq[open]{border-color:var(--brand-subtle);box-shadow:var(--shadow-sm)}
-  .faq summary{padding:20px 24px;font-family:var(--serif);font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;color:var(--ink)}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary svg{width:22px;height:22px;flex-shrink:0;transition:transform .25s;color:var(--brand)}
-  .faq[open] summary svg{transform:rotate(180deg)}
-  .faq p{padding:0 24px 24px;color:var(--n700);font-size:15.5px;line-height:1.65}
+  .faq{padding:104px 0}
+  .faq .wrap{max-width:820px}
+  .faq h2{margin-bottom:36px}
+  details{border-top:1px solid var(--line)}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:600;font-size:18px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"";position:absolute;right:6px;top:50%;width:11px;height:11px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+  details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+  details p{padding:0 0 22px;color:var(--ink-2);font-size:16.5px;max-width:700px}
+
+  /* FINAL CTA */
+  .final{padding:0 0 104px}
+  .final .card{background:var(--accent);color:#FFF8F0;border-radius:32px;padding:64px 56px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center;overflow:hidden;position:relative}
+  .final h2{color:#FFF8F0;margin-bottom:14px}
+  .final p{color:#F6DFD2;font-size:18px;margin-bottom:28px}
+  .final .icon{justify-self:center;width:180px;height:180px;border-radius:40px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  @media (max-width:760px){.final .card{grid-template-columns:1fr;padding:44px 28px;text-align:left}.final .icon{display:none}}
 
   /* FOOTER */
-  footer{padding:64px 28px 32px;border-top:1px solid var(--n200);background:var(--cream)}
-  .foot-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;align-items:start}
-  .foot-brand{display:flex;flex-direction:column;gap:14px;max-width:340px}
-  .foot-brand .brand img{width:32px}
-  .foot-brand .brand-name{font-size:20px}
-  .foot-tagline{font-size:14px;color:var(--n600);line-height:1.55}
-  .foot-col h5{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--n500);font-weight:500;margin-bottom:14px}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-  .foot-col ul a{font-size:14px;color:var(--n700);font-weight:500}
-  .foot-col ul a:hover{color:var(--brand-dark);text-decoration:none}
-  .foot-bottom{max-width:1180px;margin:48px auto 0;padding-top:28px;border-top:1px solid var(--n200);display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13px;color:var(--n500);flex-wrap:wrap}
+  footer{border-top:1px solid var(--line);padding:48px 0 40px;font-size:15px}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+  footer h4{margin:0 0 12px;font-size:13px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  footer a{color:var(--ink-2);text-decoration:none}
+  footer a:hover{color:var(--ink);text-decoration:underline}
+  .foot-tag{color:var(--muted);max-width:340px;margin:12px 0 0;font-size:14.5px}
+  .copy{grid-column:1/-1;color:var(--muted);font-size:13.5px;padding-top:24px;border-top:1px solid var(--line);margin-top:8px}
+  @media (max-width:700px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
 
-  /* RESPONSIVE */
-  @media (max-width: 960px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .phone-wrap{order:1}
-    .phone-wrap::before{width:380px;height:380px}
-    .phone-frame{width:260px;height:528px;border-radius:42px}
-    .phone-screen{border-radius:34px}
-    .acc-grid{grid-template-columns:1fr;gap:48px}
-    .story-grid{grid-template-columns:1fr;gap:32px}
-    .story-aside{position:static}
-    .feat-grid{grid-template-columns:1fr 1fr}
-    .feat{border-right:none;border-bottom:1px solid var(--n200)}
-    .feat:nth-child(2n){border-right:none}
-    .feat:nth-last-child(-n+3){border-bottom:1px solid var(--n200)}
-    .feat:nth-last-child(-n+2){border-bottom:none}
-    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
-    .foot-brand{grid-column:1/-1;max-width:none}
-  }
-  @media (max-width: 640px){
-    section{padding:64px 0}
-    .container{padding:0 20px}
-    .nav-inner{height:60px;padding:0 20px;gap:16px}
-    .nav-links{gap:16px}
-    .nav-links a:not(.nav-cta){display:none}
-    .utility-inner{padding:6px 20px;gap:14px;justify-content:space-between}
-    .utility-inner a{font-size:11px}
-    .hero{padding:48px 0 56px}
-    .hero-h1{margin-bottom:16px}
-    .hero-sub{font-size:17px;margin-bottom:24px}
-    .hero-actions .btn-primary.lg{width:100%;justify-content:center}
-    .hero-foot{font-size:12px;gap:10px}
-    .showcase{grid-template-columns:1fr;margin-top:48px;gap:14px}
-    .show-card{padding:22px}
-    .feat-grid{grid-template-columns:1fr;border-radius:18px}
-    .feat{padding:28px 24px;border-right:none}
-    .feat:nth-last-child(-n+3){border-bottom:1px solid var(--n200)}
-    .feat:last-child{border-bottom:none}
-    .acc-rows{grid-template-columns:1fr 1fr;gap:6px 18px}
-    .acc-card{padding:20px}
-    .phone-frame{width:240px;height:488px;border-radius:38px}
-    .phone-screen{border-radius:30px}
-    .pull-quote{font-size:20px;padding-left:18px;margin-top:24px}
-    .story-text p{font-size:16px}
-    .story-text p:first-of-type::first-letter{font-size:48px}
-    .cta{padding:80px 20px}
-    .cta p{font-size:17px}
-    .cta .btn-primary.lg{width:100%;justify-content:center}
-    .price-banner{padding:18px 20px;margin-top:28px}
-    .faq summary{padding:18px 20px;font-size:16px;gap:14px}
-    .faq p{padding:0 20px 20px;font-size:14.5px}
-    footer{padding:48px 20px 24px}
-    .foot-grid{grid-template-columns:1fr;gap:28px}
-    .foot-bottom{margin-top:32px;padding-top:20px;flex-direction:column;align-items:flex-start;gap:8px}
-  }
-  @media (max-width: 400px){
-    .nav-inner{gap:10px}
-    .brand-name{font-size:18px}
-    .brand img{width:30px}
-    .nav-cta{padding:8px 12px;font-size:12.5px}
-    .acc-rows{grid-template-columns:1fr}
-  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="/">
-      <img src="assets/logo.png" alt="YumYummy" width="36" height="36">
-      <span class="brand-name">YumYummy</span>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="YumYummy home">
+      <img src="assets/app-icon.png" alt="" width="32" height="32">
+      <span>YumYummy</span>
     </a>
-    <div class="nav-links">
-      <a href="#accuracy">How it works</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#how">How it works</a>
       <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn-primary nav-cta" href="/open?ref=nav" rel="noopener"
-         data-cta-id="open_bot" data-cta-location="nav">
-        <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"></path></svg>
-        Open in Telegram
-      </a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="pill">
-          <span class="dot"></span>
-          <span>AI-powered Telegram bot for nutrition tracking</span>
-        </div>
-        <h1 class="hero-h1">Effortless logging.<br>Precision <em>you can trust.</em></h1>
-        <p class="hero-sub">Most trackers make you choose: easy or accurate. YumYummy gives you both — real nutrition data, just seconds of your time spent.</p>
-        <div class="hero-proof">
-          <span><span class="pi">🔍</span> Real data from official sources</span>
-          <span><span class="pi">⚡</span> Log any meal in 10 seconds</span>
-          <span><span class="pi">💬</span> Right inside Telegram — no app to download</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary lg" href="/open?ref=hero" rel="noopener"
-             data-cta-id="try_free" data-cta-location="hero">
-            <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"></path></svg>
-            Try free for 3 days — no card needed
-          </a>
-        </div>
-        <div class="hero-foot">
-          <span>★★★★★ 4.9 from early users</span>
-          <span class="fdot"></span>
-          <span>No credit card</span>
-          <span class="fdot"></span>
-          <span>Cancel any time</span>
-        </div>
-      </div>
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="island"></div>
-            <video autoplay muted loop playsinline class="phone-video">
-              <source src="hero_final.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- INPUT MODES -->
-    <div class="showcase">
-      <div class="show-card">
-        <div class="show-num">01 · TYPE</div>
-        <div class="show-label">Type it</div>
-        <div class="show-desc">Describe what you ate in plain language. No database hunting.</div>
-        <div class="show-input">"Oatmeal with banana and a coffee"</div>
-      </div>
-      <div class="show-card">
-        <div class="show-num">02 · VOICE</div>
-        <div class="show-label">Say it</div>
-        <div class="show-desc">Send a voice message — YumYummy transcribes &amp; logs.</div>
-        <div class="show-input">🎤 0:08 · "had a chicken caesar wrap…"</div>
-      </div>
-      <div class="show-card">
-        <div class="show-num">03 · SNAP</div>
-        <div class="show-label">Snap it</div>
-        <div class="show-desc">Photo of your meal or nutrition label — identified &amp; logged.</div>
-        <div class="show-input">📸 IMG_0421.jpg → identified</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ACCURACY -->
-<section id="accuracy">
-  <div class="container">
-    <div class="acc-grid">
-      <div>
-        <div class="eyebrow">Why it's different</div>
-        <h2 style="margin:14px 0 18px">Not another AI guess.<br>Real data. Real sources.</h2>
-        <p style="font-size:18px;color:var(--n700);line-height:1.55;max-width:520px">Most calorie apps give you a generic AI guess and call it a day. YumYummy goes further — it <strong>actively searches the internet</strong> for official nutrition data before giving you a number.</p>
-        <div class="acc-steps">
-          <div class="acc-step">
-            <div class="acc-num">1</div>
-            <div>
-              <strong>You describe your meal</strong>
-              <p>"Grande latte and Caesar salad at Starbucks" or "Chobani yogurt from the store"</p>
-            </div>
-          </div>
-          <div class="acc-step">
-            <div class="acc-num">2</div>
-            <div>
-              <strong>YumYummy searches official sources</strong>
-              <p>Restaurant menus, manufacturer websites, product databases, delivery platforms — verified, public data</p>
-            </div>
-          </div>
-          <div class="acc-step">
-            <div class="acc-num">3</div>
-            <div>
-              <strong>You get precise numbers with a source link</strong>
-              <p>Calories, protein, fat, carbs — plus a clickable reference so you can verify it yourself</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="acc-examples">
-        <div class="acc-card">
-          <div class="acc-card-head">
-            <span class="acc-card-emoji">☕</span>
-            <span class="acc-tag">Full meal</span>
-          </div>
-          <div class="acc-query">Grande latte, Caesar salad and a chocolate-chip cookie at Starbucks</div>
-          <div class="acc-rows">
-            <div class="acc-row"><span>Calories</span><strong>760 kcal</strong></div>
-            <div class="acc-row"><span>Protein</span><strong>28 g</strong></div>
-            <div class="acc-row"><span>Fat</span><strong>32 g</strong></div>
-            <div class="acc-row"><span>Carbs</span><strong>89 g</strong></div>
-          </div>
-          <div class="acc-source">starbucks.com nutrition</div>
-        </div>
-        <div class="acc-card">
-          <div class="acc-card-head">
-            <span class="acc-card-emoji">🍕</span>
-            <span class="acc-tag">Restaurant</span>
-          </div>
-          <div class="acc-query">Medium Margherita pizza at Domino's</div>
-          <div class="acc-rows">
-            <div class="acc-row"><span>Calories</span><strong>540 kcal</strong></div>
-            <div class="acc-row"><span>Protein</span><strong>24 g</strong></div>
-            <div class="acc-row"><span>Fat</span><strong>18 g</strong></div>
-            <div class="acc-row"><span>Carbs</span><strong>68 g</strong></div>
-          </div>
-          <div class="acc-source">dominos.com nutrition guide</div>
-        </div>
-        <div class="acc-card">
-          <div class="acc-card-head">
-            <span class="acc-card-emoji">🥛</span>
-            <span class="acc-tag">Grocery</span>
-          </div>
-          <div class="acc-query">Chobani Greek Yogurt, vanilla, 150 g</div>
-          <div class="acc-rows">
-            <div class="acc-row"><span>Calories</span><strong>140 kcal</strong></div>
-            <div class="acc-row"><span>Protein</span><strong>12 g</strong></div>
-            <div class="acc-row"><span>Fat</span><strong>2.5 g</strong></div>
-            <div class="acc-row"><span>Carbs</span><strong>19 g</strong></div>
-          </div>
-          <div class="acc-source">chobani.com product page</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="container">
-    <div class="story-grid">
-      <aside class="story-aside">
-        <div class="eyebrow">The backstory</div>
-        <h2 style="margin-top:14px">Built by <span style="white-space:nowrap">an&nbsp;ex&#8209;McKinsey&nbsp;manager</span> to&nbsp;hit nutrition&nbsp;goals</h2>
-        <div class="pull-quote">"Logging a restaurant meal accurately? Basically&nbsp;impossible."</div>
-      </aside>
-      <div class="story-text">
-        <p>You know the drill. You're at a restaurant, you order something, and then comes the moment — do you even bother logging it?</p>
-        <p>You open your tracker. Search "chicken shawarma." Fourteen results, none from this restaurant. Pick one that looks close enough. Guess the portion. Add the side. Guess that too. Three minutes later you've logged something — but you don't trust the numbers. And you do this five times a day.</p>
-        <p>Or you just… don't. You skip the meal. Then the next one. By Friday the app is collecting dust.</p>
-        <p>YumYummy was built by someone who lived this cycle for years — eating at airports, client sites, hotels in different cities every week. <strong>An ex-McKinsey manager who tried every tracker on the market</strong> and hit the same wall every time: the tools were either fast but inaccurate, or accurate but painfully slow.</p>
-        <p>So this one was built from scratch. Battle-tested on every meal, every day, for over two months — across restaurants, cafes, airports, and home kitchens. Not as a side project. As the tracker its creator actually wanted to use.</p>
-        <div class="story-cta">
-          <a class="btn btn-primary lg" href="/open?ref=story" rel="noopener" style="background:var(--cream);color:var(--ink)"
-             data-cta-id="try_free" data-cta-location="story">
-            <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"></path></svg>
-            Try free for 3 days — no card needed
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="sec-header">
-      <div class="eyebrow">Features</div>
-      <h2>Everything you need.<br>Nothing you don't.</h2>
-      <p class="sec-sub">Built for people who want results without the hassle of traditional calorie&nbsp;tracking apps.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="feat-icon">🧠</div>
-        <div class="feat-num">01</div>
-        <h3>Understands real meals</h3>
-        <p>"Cappuccino at Starbucks" or "shawarma from the corner shop" — YumYummy searches official sources for accurate data.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🎯</div>
-        <div class="feat-num">02</div>
-        <h3>Personal daily target</h3>
-        <p>Set your goal once — lose, maintain, or gain. YumYummy calculates your macros and tracks remaining budget all day.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🤔</div>
-        <div class="feat-num">03</div>
-        <h3>"What should I eat?"</h3>
-        <p>At a restaurant or grocery store? Ask YumYummy and get a suggestion that fits your remaining calories and macros.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">📊</div>
-        <div class="feat-num">04</div>
-        <h3>Daily &amp; weekly stats</h3>
-        <p>Clean progress bars and a 7-day overview. See trends at a glance without leaving Telegram.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">💾</div>
-        <div class="feat-num">05</div>
-        <h3>Save your go-to meals</h3>
-        <p>Eat the same breakfast every day? Save it once, log it again in one tap.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">✓</div>
-        <div class="feat-num">06</div>
-        <h3>Transparent accuracy</h3>
-        <p>Every log is labeled Exact, Estimate, or Approximate — so you always know how reliable the data is.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="pricing">
-  <div class="cta-inner">
-    <h2>Try it right now —<br>zero commitment</h2>
-    <p>No credit card, no email, no account. Just tap Start in Telegram and see how YumYummy tracks your meals in seconds.</p>
-    <a class="btn btn-primary lg" href="/open?ref=cta_section" rel="noopener"
-       data-cta-id="try_free" data-cta-location="cta_section">
-      <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.94z"></path></svg>
-      Try free for 3 days — no card needed
+    </nav>
+    <a class="store sm" href="https://apps.apple.com/app/id6785363037" data-store data-cta-id="app_store" data-cta-location="nav" aria-label="Download YumYummy on the App Store">
+      <svg aria-hidden="true"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span>
     </a>
-    <div class="price-banner">
-      <p>Your first <strong>3 days are completely free</strong> — full access, no credit card. After that, plans start at <strong>$9.99/month</strong> or <strong>$84.99/year</strong> <span class="save-pill">save 29%</span>. No charges until you decide. Cancel anytime.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker">AI calorie &amp; macro tracker for iPhone</p>
+      <h1>Calorie tracking you can <em>trust</em>.</h1>
+      <p class="lead">Log any meal by text, voice or photo in about ten seconds. YumYummy looks up real nutrition data from official sources and shows you where every number came from.</p>
+      <div class="cta-row">
+        <a class="store" href="https://apps.apple.com/app/id6785363037" data-store data-cta-id="app_store" data-cta-location="hero" aria-label="Download YumYummy on the App Store">
+          <svg aria-hidden="true"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <p class="cta-note">Free trial to start.<br>Cancel anytime in Settings.</p>
+      </div>
+      <div class="ways" aria-label="Ways to log a meal">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg>Type it</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Say it</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Snap it</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <picture>
+        <source srcset="assets/screens/phone_breakdown.webp" type="image/webp">
+        <img src="assets/screens/phone_breakdown.jpg" width="720" height="1041" alt="YumYummy app showing a salad broken down into ingredients, 174 kcal marked Exact, each with a source link" fetchpriority="high">
+      </picture>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div class="sec-header">
-      <div class="eyebrow">FAQ</div>
-      <h2>Common questions</h2>
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker" style="color:#E9A98C">Not another AI guess</p>
+      <h2>Every number comes with its source.</h2>
+      <p style="margin-top:18px">Most AI trackers estimate and move on. YumYummy searches for official nutrition data first, and labels each entry Exact, Estimate or Approximate, so you always know how far to trust it.</p>
     </div>
-    <div class="faq-list">
-      <details class="faq">
-        <summary>I've tried calorie trackers before and always quit. Why would this be different?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>Because the reason you quit wasn't you — it was the tool. Most trackers take 3–5 minutes per meal: searching databases, scrolling through options, adjusting serving sizes. That's 15–20 minutes a day on logging alone. YumYummy takes 10 seconds — just text, say, or snap what you ate. When tracking is that easy, sticking with it stops being a willpower problem.</p>
-      </details>
-      <details class="faq">
-        <summary>How accurate is it? AI calorie estimates are usually wrong.
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>You're right — generic AI guesses aren't good enough. That's why YumYummy doesn't guess first. It searches the web for real nutrition data: restaurant menus, manufacturer websites, product databases. You get the best accuracy possible — official numbers from official sources. AI estimation is only a fallback when real data isn't available online, and the bot always tells you which one you got: Exact (official source), Estimate, or Approximate.</p>
-      </details>
-      <details class="faq">
-        <summary>Is $9.99/month worth it for a calorie tracker?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>You're not paying for a tracker. You're paying for data accurate enough to actually reach your health goal — whether that's losing weight, building muscle, or just eating better. A free app with unreliable data means months of effort based on wrong numbers. That's the expensive option. YumYummy gives you real nutrition data from real sources in 10 seconds, for less than the cost of a single coffee.</p>
-      </details>
-      <details class="faq">
-        <summary>A Telegram bot? Is this a real product?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>Try it for 30 seconds and you'll forget it's a bot. YumYummy is a full nutrition tracking system — personalized macro targets, daily and weekly summaries, saved meals, smart meal recommendations, data export — that happens to live inside Telegram, where you already spend your time. No app to download. No account to create. Just tap Start.</p>
-      </details>
-      <details class="faq">
-        <summary>Do I need to enter my credit card to try it?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>No. Tap Start in Telegram and get 3 days of full access — every feature, no limits — with zero payment info required. No surprise charges. No "forgot to cancel" stress. If it's not for you, it just stops. If you want to continue, you choose a plan.</p>
-      </details>
-      <details class="faq">
-        <summary>Does it work for restaurant meals / local food / specific cuisines?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
-        </summary>
-        <p>Yes — that's where YumYummy really shines. It searches the web for nutrition data from specific restaurants, cafes, and brands. Starbucks, Domino's, your local shawarma place — if the nutrition info exists online, YumYummy will find it. It works globally: Dubai, Moscow, Jakarta, Istanbul, or anywhere else.</p>
-      </details>
+    <div class="src-list reveal">
+      <div class="src"><b>USDA FoodData Central</b><span>The US government's food composition database</span></div>
+      <div class="src"><b>Official nutrition labels</b><span>EU and UK labels, read from your photo or found online</span></div>
+      <div class="src"><b>Brands &amp; manufacturers</b><span>Product pages for the exact item you bought</span></div>
+      <div class="src"><b>Restaurant menus</b><span>Published nutrition for chains, cafés and delivery</span></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Built for real life</p>
+      <h2>Fast enough to keep doing. Accurate enough to matter.</h2>
+      <p class="lead">People quit calorie apps because logging takes minutes and the numbers still feel made up. YumYummy fixes both.</p>
+    </div>
+
+    <div class="row reveal">
+      <div class="row-media">
+        <picture>
+          <source srcset="assets/screens/phone_log_10sec.webp" type="image/webp">
+          <img src="assets/screens/phone_log_10sec.jpg" width="720" height="1103" loading="lazy" alt="Logging a meal by typing, with photo and voice options">
+        </picture>
+      </div>
+      <div class="row-text">
+        <h3>Log any meal in about ten seconds</h3>
+        <p class="lead">Describe it the way you'd text a friend. No database hunting, no scrolling through fourteen versions of “chicken wrap”.</p>
+        <ul class="ticks">
+          <li>Type “steak salad with olive oil”</li>
+          <li>Say it out loud and it's transcribed for you</li>
+          <li>Snap the plate, the package or the nutrition label</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row flip reveal">
+      <div class="row-media">
+        <picture>
+          <source srcset="assets/screens/phone_sources.webp" type="image/webp">
+          <img src="assets/screens/phone_sources.jpg" width="720" height="1103" loading="lazy" alt="How we got this: a list of USDA source links behind a logged meal">
+        </picture>
+      </div>
+      <div class="row-text">
+        <h3>See how we got every number</h3>
+        <p class="lead">Each meal is broken into its parts, and each part links to where the data came from. If something looks off, edit the portion and the totals update.</p>
+        <ul class="ticks">
+          <li>Calories, protein, fat and carbs per ingredient</li>
+          <li>A clear Exact, Estimate or Approximate label</li>
+          <li>Repeat a meal or save it to My Menu in one tap</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row reveal">
+      <div class="row-media">
+        <picture>
+          <source srcset="assets/screens/phone_ai_advisor.webp" type="image/webp">
+          <img src="assets/screens/phone_ai_advisor.jpg" width="720" height="1103" loading="lazy" alt="Asking the AI advisor what to order at Starbucks and getting a suggestion that fits remaining macros">
+        </picture>
+      </div>
+      <div class="row-text">
+        <h3>Eating out? Ask what to order</h3>
+        <p class="lead">Tell the advisor where you are. It suggests options that fit the calories and protein you have left today, with the numbers to back them up.</p>
+        <ul class="ticks">
+          <li>Restaurants, coffee shops, the supermarket</li>
+          <li>Answers based on your own targets and today's log</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row flip reveal">
+      <div class="row-media">
+        <picture>
+          <source srcset="assets/screens/phone_weekly_insight.webp" type="image/webp">
+          <img src="assets/screens/phone_weekly_insight.jpg" width="720" height="1103" loading="lazy" alt="Weekly insights: calories per day, averages for the month and a logging streak">
+        </picture>
+      </div>
+      <div class="row-text">
+        <h3>See what's actually working</h3>
+        <p class="lead">Weekly charts and monthly averages show what really happened, without judgment.</p>
+        <ul class="ticks">
+          <li>Daily calories against your goal</li>
+          <li>Average calories and macros over time</li>
+          <li>A weekly recap of your patterns</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="more">
+  <div class="wrap">
+    <div class="grid">
+      <div class="tile reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        <h3>Targets made for you</h3>
+        <p>Pick a goal: lose, maintain, gain or just track. YumYummy sets calorie and macro targets with the Mifflin–St Jeor equation, and you can edit them anytime.</p>
+      </div>
+      <div class="tile wide reveal">
+        <div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+          <h3>Log from your home screen</h3>
+          <p>The widget shows what's left for today and opens text, photo or voice logging in one tap.</p>
+        </div>
+        <picture>
+          <source srcset="assets/screens/widget.webp" type="image/webp">
+          <img src="assets/screens/widget.jpg" width="720" height="368" loading="lazy" alt="YumYummy home screen widget: 867 kcal left, macro bars and buttons for text, photo, voice and saved meals">
+        </picture>
+      </div>
+      <div class="tile reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+        <h3>Calm by design</h3>
+        <p>No guilt trips. A quiet, factual record of what you ate, so you can adjust and keep going.</p>
+      </div>
+      <div class="tile reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/></svg>
+        <h3>Your data stays yours</h3>
+        <p>We don't sell your data. Sign in with Apple, and delete your account and diary from the app whenever you like.</p>
+      </div>
+      <div class="tile reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <h3>Your go-to meals, saved</h3>
+        <p>Same breakfast every day? Save it to My Menu once and log it again in one tap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" aria-label="App screenshots">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Take a look inside.</h2>
+    </div>
+  </div>
+  <div class="shots" tabindex="0" aria-label="Scrollable gallery of app screenshots">
+    <picture><source srcset="assets/screens/card_hero.webp" type="image/webp"><img src="assets/screens/card_hero.jpg" width="540" height="1170" loading="lazy" alt="Calorie tracking you can trust: daily calories left with protein, fat and carbs"></picture>
+    <picture><source srcset="assets/screens/card_sources.webp" type="image/webp"><img src="assets/screens/card_sources.jpg" width="540" height="1170" loading="lazy" alt="See real sources for your numbers"></picture>
+    <picture><source srcset="assets/screens/card_log_10sec.webp" type="image/webp"><img src="assets/screens/card_log_10sec.jpg" width="540" height="1170" loading="lazy" alt="Easily log any meal in 10 seconds"></picture>
+    <picture><source srcset="assets/screens/card_ai_advisor.webp" type="image/webp"><img src="assets/screens/card_ai_advisor.jpg" width="540" height="1170" loading="lazy" alt="Eating out? Ask what to order"></picture>
+    <picture><source srcset="assets/screens/card_weekly_insight.webp" type="image/webp"><img src="assets/screens/card_weekly_insight.jpg" width="540" height="1170" loading="lazy" alt="See what's actually working"></picture>
+    <picture><source srcset="assets/screens/card_breakdown.webp" type="image/webp"><img src="assets/screens/card_breakdown.jpg" width="540" height="1170" loading="lazy" alt="Any meal broken down to components"></picture>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap reveal">
+    <p class="kicker">Why we built it</p>
+    <h2>Made by someone who kept quitting calorie apps.</h2>
+    <blockquote>“Logging a restaurant meal accurately? Basically impossible.”</blockquote>
+    <p>You search “chicken shawarma” and get fourteen results, none from the place you ate. You guess the portion, guess the side, and three minutes later you've logged something you don't trust. Five times a day. By Friday the app is collecting dust.</p>
+    <p>YumYummy was built by an ex-McKinsey manager who lived that cycle for years, eating at airports, client sites and hotels in a different city every week. Every tracker was either fast but inaccurate, or accurate but painfully slow.</p>
+    <p>So this one was built from scratch to be both: the tracker its creator actually wanted to use, every meal, every day.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details>
+      <summary>How accurate is it? AI calorie counts are usually wrong.</summary>
+      <p>That's why YumYummy doesn't guess first. It looks for real nutrition data from USDA, official labels, manufacturers and restaurant menus. When no official data exists, it estimates and tells you so: every entry is labeled Exact, Estimate or Approximate, and you can tap through to the source or edit any portion.</p>
+    </details>
+    <details>
+      <summary>I've tried calorie trackers before and always quit. Why would this be different?</summary>
+      <p>Most trackers take three to five minutes per meal: searching, scrolling, adjusting servings. YumYummy takes about ten seconds. Type it, say it or snap it. When logging is that quick, sticking with it stops being a willpower problem.</p>
+    </details>
+    <details>
+      <summary>How much does it cost?</summary>
+      <p>You start with a free trial. The price for your country is shown in the App Store before you subscribe. Subscriptions are billed by Apple, and you can cancel anytime in Settings → your Apple Account → Subscriptions.</p>
+    </details>
+    <details>
+      <summary>Does it work for restaurants and local food?</summary>
+      <p>Yes, that's where it shines. If a chain, café or brand publishes nutrition data online, YumYummy finds it. For a dish with no published data, it breaks the meal into ingredients and shows you exactly what it assumed.</p>
+    </details>
+    <details>
+      <summary>Is there an Android version?</summary>
+      <p>Not yet. YumYummy is available for iPhone.</p>
+    </details>
+    <details>
+      <summary>What happens to my data and photos?</summary>
+      <p>Your diary is private and we don't sell your data. Photos and voice notes are used to log your meal. You can delete your account and all your data in the app under Profile → Delete account. Details are in our <a href="privacy.html">Privacy Policy</a>.</p>
+    </details>
+    <details>
+      <summary>I used the YumYummy Telegram bot. What now?</summary>
+      <p>YumYummy now lives in the iPhone app, and the Telegram bot is no longer active. If you have a question about an earlier Telegram subscription, write to us via the <a href="support.html">Support page</a>.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="card reveal">
+      <div>
+        <h2>Start logging in seconds.</h2>
+        <p>Your first meal takes about ten seconds, and the numbers come with receipts.</p>
+        <a class="store" href="https://apps.apple.com/app/id6785363037" data-store data-cta-id="app_store" data-cta-location="final" aria-label="Download YumYummy on the App Store">
+          <svg aria-hidden="true"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+      <img class="icon" src="assets/app-icon.png" width="180" height="180" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+</main>
+
 <footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <a class="brand" href="/">
-        <img src="assets/logo.png" alt="YumYummy" width="32" height="32">
-        <span class="brand-name">YumYummy</span>
-      </a>
-      <p class="foot-tagline">A Telegram-native nutrition log that pulls calories and macros from real sources, not LLM guesses.</p>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><img src="assets/app-icon.png" alt="" width="32" height="32"><span>YumYummy</span></a>
+      <p class="foot-tag">The AI calorie tracker for iPhone that shows where every number comes from.</p>
     </div>
-    <div class="foot-col">
-      <h5>Product</h5>
+    <div>
+      <h4>Product</h4>
       <ul>
-        <li><a href="#accuracy">How it works</a></li>
+        <li><a href="#how">How it works</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="/open?ref=footer" rel="noopener" data-cta-id="open_bot" data-cta-location="footer">Open in Telegram</a></li>
+        <li><a href="https://apps.apple.com/app/id6785363037" data-store data-cta-id="app_store" data-cta-location="footer">App Store</a></li>
       </ul>
     </div>
-    <div class="foot-col">
-      <h5>Legal &amp; Help</h5>
+    <div>
+      <h4>Legal &amp; help</h4>
       <ul>
         <li><a href="terms.html">Terms &amp; Conditions</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
@@ -647,12 +527,10 @@ src="https://www.facebook.com/tr?id=826914203808503&ev=PageView&noscript=1"
         <li><a href="support.html">Support &amp; Contact</a></li>
       </ul>
     </div>
-  </div>
-  <div class="foot-bottom">
-    <span>&copy; 2026 YumYummy. All rights reserved.</span>
-    <span>yumyummy.ai</span>
+    <p class="copy">© 2026 YumYummy. All rights reserved. Apple, the Apple logo and App Store are trademarks of Apple Inc.</p>
   </div>
 </footer>
 
+<script src="assets/site.js" defer></script>
 </body>
 </html>
